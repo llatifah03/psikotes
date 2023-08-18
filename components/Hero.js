@@ -2,9 +2,9 @@
 
 import React, { useMemo } from "react";
 import Image from "next/image";
-import ButtonPrimary from "../components/Button/ButtonPrimary";
+import ButtonPrimary from "@/components/Button/ButtonPrimary";
 import { motion } from "framer-motion";
-import getScrollAnimation from "../../utils/getScrollAnimation";
+import getScrollAnimation from "@/utils/getScrollAnimation";
 import ScrollAnimationWrapper from "./Layout/ScrollAnimationWrapper";
 
 const Hero = ({
@@ -50,12 +50,12 @@ const Hero = ({
           <div className="flex w-full">
             <motion.div className="h-full w-full" variants={scrollAnimation}>
               <Image
-                src="/assets/Icon/psikotes.svg"
+                src="assets/Icon/psikotes.svg"
                 alt="psikotes"
                 quality={100}
                 width={612}
                 height={383}
-                layout="responsive"
+                // layout="responsive"
               />
             </motion.div>
           </div>
