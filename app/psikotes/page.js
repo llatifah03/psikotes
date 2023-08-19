@@ -26,7 +26,7 @@ export default async function Psikotes() {
   return (
     <div className="md:flex max-w-screen-xl mt-32 px-8 xl:px-16 mx-auto justify-center gap-8 flex-wrap">
       {psikotes?.map((tes) => (
-        <CardVertical tes={tes} />
+        <CardVertical key={tes._id} tes={tes} />
       ))}
     </div>
   );
