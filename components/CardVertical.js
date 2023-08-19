@@ -1,20 +1,19 @@
 import Link from "next/link";
 import ButtonPrimary from "@/components/Button/ButtonPrimary";
+import Image from "next/image";
 
 function CardVertical({ tes }) {
   return (
     <div
       key={tes._id}
-      className="max-w-xs rounded overflow-hidden shadow-lg bg-white "
+      className="w-72 rounded overflow-hidden shadow-lg bg-white relative"
     >
-      <img
-        className="w-full"
-        src={tes?.imageUrl}
-        alt="Sunset in the mountains"
-      />
+      <div>
+        <Image src={tes?.imageUrl} alt="psikotes" width={300} height={300} />
+      </div>
 
-      <div className="px-6 py-4">
-        <p className="text-sm text-gray-600 flex items-center">
+      <div className="px-4 py-4 items-center mb-16">
+        <p className="text-sm text-gray-600 flex text-center items-center">
           <svg
             className="fill-current text-gray-500 w-3 h-3 mr-2"
             xmlns="http://www.w3.org/2000/svg"
@@ -28,7 +27,7 @@ function CardVertical({ tes }) {
 
         <p className="text-gray-700 text-base">{tes?.description}</p>
       </div>
-      <div className="px-6 pt-4 pb-2">
+      <div className="w-full px-4 pt-4 pb-2 absolute bottom-0">
         <Link href={`/psikotes/${tes?.pathName}`}>
           <ButtonPrimary addClass="w-full">Mulai</ButtonPrimary>
         </Link>

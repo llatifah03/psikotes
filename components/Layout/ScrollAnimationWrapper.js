@@ -11,6 +11,7 @@ export default function ScrollAnimationWrapper({
       whileInView="onscreen"
       viewport={{ once: true, amount: 0.8 }}
       className={className}
+      style={{ marginTop: "100px" }}
       {...props}
     >
       {children}

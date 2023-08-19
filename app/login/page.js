@@ -39,14 +39,14 @@ export default function Dashboard() {
 
   const scrollAnimation = useMemo(() => getScrollAnimation(), []);
   return (
-    <div className="md:flex max-w-screen-xl mt-24 px-8 xl:px-16 mx-auto justify-center">
+    <div className="md:flex max-w-screen-xl mt-28 px-8 xl:px-16 mx-auto justify-center">
       <div className="relative overflow-hidden md:flex w-1/2  justify-around align-center items-center hidden">
         <motion.div
           className="flex mr-8 h-full w-full"
           variants={scrollAnimation}
         >
           <Image
-            src="assets/Icon/login.svg"
+            src="assets/Icon/psikotes.svg"
             alt="psikotes"
             quality={100}
             width={612}
