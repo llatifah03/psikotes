@@ -45,7 +45,7 @@ const Hero = ({
               kebutuhan tes penilaian kerja. Tes Psikologi kami dirancang untuk
               mengeksplorasi diri agar mengetahui karakter dan potensi diri.
             </p>
-            <ButtonPrimary>Get Started</ButtonPrimary>
+            <ButtonPrimary>Mulai</ButtonPrimary>
           </div>
           <div className="flex w-full">
             <motion.div className="h-full w-full" variants={scrollAnimation}>

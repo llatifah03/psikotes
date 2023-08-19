@@ -27,7 +27,6 @@ export default function Dashboard() {
         },
         body: JSON.stringify({ username, email, password }),
       });
-      console.log("response", response.status);
       if (response.ok) {
         router.push("/login");
       } else {
@@ -35,6 +34,7 @@ export default function Dashboard() {
       }
     } catch (error) {
       console.log("error", error);
+      toast.error(error);
     }
   };
 

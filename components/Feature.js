@@ -2,10 +2,8 @@
 import React, { useMemo } from "react";
 import Image from "next/image";
 
-// import Testimoni from "./Testimoni";
 import ButtonPrimary from "@/components/Button/ButtonPrimary";
 import ButtonOutline from "@/components/Button/ButtonOutline";
-// import Maps from "../public/assets/HugeGlobal.svg";
 import { motion } from "framer-motion";
 import getScrollAnimation from "@/utils/getScrollAnimation";
 import ScrollAnimationWrapper from "./Layout/ScrollAnimationWrapper";
@@ -181,20 +179,12 @@ const Pricing = () => {
               locations.
             </motion.p>
           </ScrollAnimationWrapper>
-          <ScrollAnimationWrapper>
-            <motion.div
-              className="py-12 w-full px-8 mt-16"
-              variants={scrollAnimation}
-            >
-              {/* <Maps className="w-full h-auto" /> */}
-            </motion.div>
-          </ScrollAnimationWrapper>
+
           <ScrollAnimationWrapper>
             <motion.div
               className="w-full flex justify-evenly items-center mt-4 flex-wrap lg:flex-nowrap"
               variants={scrollAnimation}
             >
-              {/* <Netflix className="h-18 w-auto" /> */}
               <img src="" className="h-14 w-auto mt-4 lg:mt-2" alt="" />
               <img src="" className="h-14 w-auto mt-2 lg:mt-0" alt="" />
               <img src="" className="h-12 w-auto mt-2 lg:mt-0" alt="" />

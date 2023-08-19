@@ -1,7 +1,7 @@
 "use client";
 
-// import Facebook from "../../../public/assets/Icon/facebook.svg";
-// import Instagram from "../../../public/assets/Icon/instagram.svg";
+import { BsFacebook, BsInstagram } from "react-icons/bs";
+import { TfiYoutube } from "react-icons//tfi";
 
 export default function Footer() {
   return (
@@ -15,11 +15,13 @@ export default function Footer() {
           </p>
           <div className="flex w-full mt-2 mb-8 -mx-2">
             <div className="mx-2 bg-white-500 rounded-full items-center justify-center flex p-2 shadow-md">
-              {/* <Facebook className="h-6 w-6" /> */}
+              <BsFacebook size={24} color="" />
             </div>
-            <div className="mx-2 bg-white-500 rounded-full items-center justify-center flex p-2 shadow-md"></div>
             <div className="mx-2 bg-white-500 rounded-full items-center justify-center flex p-2 shadow-md">
-              {/* <Instagram className="h-6 w-6" /> */}
+              <BsInstagram size={24} />
+            </div>
+            <div className="mx-2 bg-white-500 rounded-full items-center justify-center flex p-2 shadow-md">
+              <TfiYoutube size={24} color="" />
             </div>
           </div>
           <p className="text-gray-400">

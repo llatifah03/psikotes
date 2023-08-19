@@ -7,7 +7,6 @@
       "@/utils/*": ["utils/*"],
       "@/models/*": ["models/*"],
       "@/public/*": ["public/*"],
-      "@/hooks/*": ["hooks/*"]
     }
   }
 }
