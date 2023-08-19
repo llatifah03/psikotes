@@ -25,7 +25,7 @@ const Header = () => {
         <nav className="max-w-screen-xl px-6 sm:px-8 lg:px-16 mx-auto grid grid-flow-col py-3 sm:py-4">
           <div className="col-start-1 col-end-2 flex items-center">
             <Link href="/">
-              <div className="flex align-item-center text-orange-500">
+              <div className="flex align-item-center text-orange-500 text-2xl">
                 <SiPytest size={24} />
                 <span>Psikotes</span>
               </div>

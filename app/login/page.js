@@ -11,7 +11,6 @@ import ButtonOutline from "@/components/Button/ButtonOutline";
 
 export default function Dashboard() {
   const router = useRouter();
-  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
