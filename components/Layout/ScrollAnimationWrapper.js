@@ -9,9 +9,9 @@ export default function ScrollAnimationWrapper({
     <motion.div
       initial="offscreen"
       whileInView="onscreen"
-      viewport={{ once: true, amount: 0.8 }}
+      viewport={{ once: true, amount: 1 }}
       className={className}
-      style={{ marginTop: "100px" }}
+      // style={{ marginTop: "100px" }}
       {...props}
     >
       {children}
