@@ -6,11 +6,19 @@ export async function POST(request) {
   const { username, email, password } = await request.json();
   console.log("masuk POST User", username, email, password);
   if (!username || !email || !password) {
-    return NextResponse.json({ message: "Bad Request" }, { status: 401 });
+    return NextResponse.json({}, { status: 401, statusText: "Bad Request" });
   } else {
     await connectMongoDB();
-    await User.create({ username, email, password });
-    return NextResponse.json({ message: "User Created" }, { status: 201 });
+    const cekEmail = await User.findOne({ email });
+    if (cekEmail) {
+      return NextResponse.json(
+        {},
+        { status: 400, statusText: "Email sudah terdaftar" }
+      );
+    } else {
+      await User.create({ username, email, password });
+      return NextResponse.json({ message: "User Created" }, { status: 201 });
+    }
   }
 }
 

@@ -9,32 +9,60 @@ import toast from "react-hot-toast";
 import getScrollAnimation from "@/utils/getScrollAnimation";
 import ButtonOutline from "@/components/Button/ButtonOutline";
 
-export default function Dashboard() {
+export default function LoginPage() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setLoading] = useState(true);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("masuk handleSubmit");
 
-    try {
-      const response = await fetch("http://localhost:3000/api/user", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, email, password }),
-      });
-      console.log("response", response.status);
-      if (response.ok) {
-        // router.push("/");
-      } else {
-        toast.error("Failed to create user");
-      }
-    } catch (error) {
-      console.log("error", error);
-    }
+    fetch("/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    })
+      .then((res) => res.json())
+      .then((response) => {
+        console.log("LoginPage response", response);
+        if (response.status === 200) {
+          localStorage.setItem("psikotes_token", response?.token);
+          toast.success("Selamat datang! Anda berhasil masuk ke akun Anda.");
+          router.push("/");
+        } else {
+          toast.error(response?.message);
+        }
+      })
+      .catch((err) => {
+        console.log("LoginPage err", err);
+        toast.error(err);
+      })
+      .finally(() => setLoading(false));
+
+    // try {
+    //   const response = await fetch(`/api/login`, {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({ email, password }),
+    //   });
+    //   console.log("LoginPage response", response);
+    //   if (response.ok) {
+    //     // router.push("/");
+    //     toast.success("Selamat datang! Anda berhasil masuk ke akun Anda.");
+    //     localStorage.setItem("psikotes_token", response.token);
+    //     router.push("/dashboard");
+    //   } else {
+    //     toast.error(response?.statusText);
+    //   }
+    // } catch (error) {
+    //   console.log("error", error);
+    // }
   };
 
   const scrollAnimation = useMemo(() => getScrollAnimation(), []);
@@ -129,7 +157,9 @@ export default function Dashboard() {
             />
           </div>
           <div className="mt-4">
-            <ButtonOutline type="submit">Masuk</ButtonOutline>
+            <ButtonOutline type="submit">
+              {isLoading ? "isLoading" : "Masuk"}
+            </ButtonOutline>
           </div>
         </form>
         {/* <div className="w-full my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300">

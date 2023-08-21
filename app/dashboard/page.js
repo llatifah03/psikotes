@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 
 const getUsers = async () => {
   try {
-    const res = await fetch(`${process.env.PATH_URL}api/user`, {
+    const res = await fetch(`${process.env.PATH_URL}/api/user`, {
       cache: "no-store",
     });
 
@@ -28,9 +28,10 @@ export default async function Dashboard() {
           className="p-4 border border-slate-300 my-3 flex justify-between gap-5 items-start"
         >
           <div>
-            <h2 className="font-bold text-2xl">{user.username}</h2>
-            <div>{user.email}</div>
-            <div>{user._id}</div>
+            <h2 className="font-bold text-2xl">username: {user.username}</h2>
+            <div>email: {user.email}</div>
+            <div>_id: {user._id}</div>
+            <div>password: {user.password}</div>
           </div>
 
           <div className="flex gap-2">

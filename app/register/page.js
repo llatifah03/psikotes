@@ -20,20 +20,21 @@ export default function Dashboard() {
     console.log("masuk handleSubmit");
 
     try {
-      const response = await fetch("http://localhost:3000/api/user", {
+      const response = await fetch(`/api/user`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ username, email, password }),
       });
+      console.log("register response", response);
       if (response.ok) {
         router.push("/login");
       } else {
-        toast.error("Failed to create user");
+        toast.error(response?.statusText);
       }
     } catch (error) {
-      console.log("error", error);
+      console.log("register error", error);
       toast.error(error);
     }
   };
