@@ -19,6 +19,7 @@ export async function POST(request) {
         let access_token = createToken({
           id: user._id,
           email: user.email,
+          name: user.username,
         });
         return NextResponse.json(
           {
