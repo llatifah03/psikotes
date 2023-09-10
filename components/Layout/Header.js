@@ -5,6 +5,7 @@ import Link from "next/link";
 import { SiPytest } from "react-icons/si";
 import { Link as LinkScroll } from "react-scroll";
 import ButtonOutline from "@/components/Button/ButtonOutline";
+import ButtonLogin from "@/components/Button/ButtonLogin";
 
 const Header = () => {
   const [activeLink, setActiveLink] = useState(null);
@@ -103,6 +104,9 @@ const Header = () => {
               >
                 <ButtonOutline>Daftar</ButtonOutline>
               </Link>
+            </div>
+            <div className="w-32">
+              <ButtonLogin>Daftar</ButtonLogin>
             </div>
           </div>
         </nav>

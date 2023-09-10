@@ -12,6 +12,7 @@ export async function POST(request) {
     await connectMongoDB();
     const user = await User.findOne({ email });
     // console.log("findOne user", user);
+    const { ...userWithoutPass } = user;
     if (user) {
       if (verifyPassword(password, user.password)) {
         console.log("masuk if verifyPassword");
@@ -20,9 +21,21 @@ export async function POST(request) {
           email: user.email,
         });
         return NextResponse.json(
-          { status: 200, token: access_token }, // CSR status 200
-          { status: 200 } // SSR => status ok
+          {
+            status: 200,
+            accessToken: access_token,
+            username: user.username,
+            email: user.email,
+          }, // CSR status 200
+          { status: 200, accessToken: access_token } // SSR => status ok
         );
+        // const { password, ...userWithoutPass } = user;
+        // const accessToken = createToken(userWithoutPass);
+        // const result = {
+        //   ...userWithoutPass,
+        //   accessToken,
+        // };
+        // return new Response(JSON.stringify(result));
       } else {
         console.log("masuk else password wrong!");
         return NextResponse.json(
@@ -33,7 +46,7 @@ export async function POST(request) {
           },
           {
             status: 400,
-            statusText:
+            message:
               "Maaf, nama pengguna atau kata sandi yang Anda masukkan salah. Silakan coba lagi.",
           }
         );
@@ -42,12 +55,12 @@ export async function POST(request) {
       return NextResponse.json(
         {
           status: 400,
-          statusText:
+          message:
             "Maaf, nama pengguna atau kata sandi yang Anda masukkan salah. Silakan coba lagi.",
         },
         {
           status: 400,
-          statusText:
+          message:
             "Maaf, nama pengguna atau kata sandi yang Anda masukkan salah. Silakan coba lagi.",
         }
       );

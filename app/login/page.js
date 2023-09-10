@@ -7,13 +7,14 @@ import { motion } from "framer-motion";
 import toast from "react-hot-toast";
 
 import getScrollAnimation from "@/utils/getScrollAnimation";
-import ButtonOutline from "@/components/Button/ButtonOutline";
+import ButtonPrimary from "@/components/Button/ButtonPrimary";
+import Input from "@/components/Form/Input";
 
 export default function LoginPage() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isLoading, setLoading] = useState(true);
+  const [isLoading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,7 +33,7 @@ export default function LoginPage() {
         if (response.status === 200) {
           localStorage.setItem("psikotes_token", response?.token);
           toast.success("Selamat datang! Anda berhasil masuk ke akun Anda.");
-          router.push("/");
+          // router.push("/");
         } else {
           toast.error(response?.message);
         }
@@ -97,69 +98,22 @@ export default function LoginPage() {
             </Link>
           </p>
 
-          <div className="mt-2">
-            <label
-              className="flex text-white dark:text-gray-200 "
-              htmlFor="emailAddress"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 text-gray-100"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
-                />
-              </svg>
-              E-mail
-            </label>
-            <input
-              id="emailAddress"
-              type="email"
-              value={email}
-              required
-              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-              onChange={(e) => setEmail(e.target.value)}
-              className="border-red-500 block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
-            />
-          </div>
-          <div className="mt-2">
-            <label
-              className="flex text-white dark:text-gray-200"
-              htmlFor="password"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 text-gray-100"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-                  clipRule="evenodd"
-                />
-              </svg>{" "}
-              Kata Sandi
-            </label>
-            <input
-              id="password"
-              type="password"
-              value={password}
-              required
-              onChange={(e) => setPassword(e.target.value)}
-              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
-            />
-          </div>
+          <Input
+            label={"E-mail"}
+            type="email"
+            value={email}
+            setValue={setEmail}
+          />
+          <Input
+            label={"Kata Sandi"}
+            type="password"
+            value={password}
+            setValue={setPassword}
+          />
           <div className="mt-4">
-            <ButtonOutline type="submit">
+            <ButtonPrimary type="submit">
               {isLoading ? "isLoading" : "Masuk"}
-            </ButtonOutline>
+            </ButtonPrimary>
           </div>
         </form>
         {/* <div className="w-full my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300">

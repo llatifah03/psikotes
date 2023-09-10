@@ -1,8 +1,10 @@
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
+import Providers from "@/components/Providers";
 // import { Inter } from "next/font/google";
 import Header from "@/components/Layout/Header";
 import Footer from "@/components/Layout/Footer";
+import AppBar from "@/components/AppBar";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -15,12 +17,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <main>
+        <Providers>
           <Toaster />
-          <Header />
-          {children}
+          {/* <Header /> */}
+          <AppBar />
+          <main>{children}</main>
           <Footer />
-        </main>
+        </Providers>
       </body>
     </html>
   );
